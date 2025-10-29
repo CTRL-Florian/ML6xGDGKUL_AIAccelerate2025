@@ -16,6 +16,20 @@ CX = "e173d3da7360c4ed8"
 logger = logging.getLogger(__name__)
 
 def web_search(query: str) -> dict:
+    """Performs a web search and returns the top results.
+
+    
+    Args:
+        query (str): The search query.
+        context (ToolContext): The tool execution context.
+
+    Returns:
+        dict: A dictionary containing the search results.
+    Example:
+        >>> web_search("What is the weather in Nairobi?", context)
+        {'results': [{'title': ..., 'snippet': ..., 'url': ...}, ...]}
+    """
+    
     page = 1
     start = (page - 1) * 10 + 1
 
@@ -41,27 +55,6 @@ def web_search(query: str) -> dict:
             "html_snippet": search_item.get("htmlSnippet", "N/A")
         })
     
-    
-    """# print the results
-    print("="*10, f"Result #{i+start-1}", "="*10)
-    print("Title:", title)
-    print("Description:", snippet)
-    print("Long description:", long_description)
-    print("URL:", link, "\n")"""
-
-    """Performs a web search and returns the top results.
-
-    
-    Args:
-        query (str): The search query.
-        context (ToolContext): The tool execution context.
-
-    Returns:
-        dict: A dictionary containing the search results.
-    Example:
-        >>> web_search("What is the weather in Nairobi?", context)
-        {'results': [{'title': ..., 'snippet': ..., 'url': ...}, ...]}
-    """
     logger.info(f"Performing web search for query: {query}")
     result = {
         "results": results_list

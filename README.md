@@ -8,8 +8,10 @@ For case information, see below
 1. Navigatie to project root
 2. bash: uv pip install pypdf
 3. bash: uv pip install openpyxl
-4. bash: pip install requests
-5. bash: pip install python-dotenv
+4. bash: pip install sympy
+5. bash: pip install requests
+6. bash: pip install python-dotenv
+
 </pre>
 
 <p align="center">
