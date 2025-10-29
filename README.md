@@ -1,8 +1,23 @@
+<p>
+For case information, see below
+</p>
+
+<h1>Team 25 Solution</h1>
+<h2>Install guide:</h2>
+<pre>
+1. Navigatie to project root
+2. bash: uv pip install pypdf
+3. bash: uv pip install openpyxl
+4. bash: pip install requests
+5. bash: pip install python-dotenv
+</pre>
+
 <p align="center">
   <img src="assets/logo.svg" alt="Project Logo" height="144">
 </p>
 
 # GDG Hackathon - ML6 Agent Challenge
+## (Case information)
 
 Welcome! This repository contains everything you need to build and evaluate an AI agent using Google's Agent Development Kit (ADK).
 

@@ -1,4 +1,5 @@
 import os
+import logging
 import pypdf
 import json
 import csv
@@ -7,6 +8,8 @@ import mimetypes # 用于检测文件类型
 
 # 附件文件夹
 ATTACHMENTS_DIR = "benchmark/attachments/"
+
+logger = logging.getLogger(__name__)
 
 def read_file(filename: str) -> str:
     """
