@@ -1,10 +1,56 @@
 import logging
 
+import os
+import requests
+import pathlib
+
+import dotenv
+
+dotenv.load_dotenv(dotenv_path=pathlib.Path("./../.env"))
+
+#API_KEY = os.getenv("GOOGLE_API_KEY")
+API_KEY = "AlzaSyBxSVxle3tWf77uWGKiSzPvqfcCwCDZMdM"
+CX = "e173d3da7360c4ed8"
+
 logger = logging.getLogger(__name__)
 
 def web_search(query: str) -> dict:
+    page = 1
+    start = (page - 1) * 10 + 1
+
+    url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={CX}&q={query}&start={start}"
+
+    data = requests.get(url).json()
+
+    # Iteration over search results
+    search_items = data.get("items")
+
+    results_list = []
+
+    for i, search_item in enumerate(search_items, start=1):
+        try:
+            long_description = search_item["pagemap"]["metatags"][0]["og:description"]
+        except KeyError:
+            long_description = "N/A"
+        # get the page title
+        results_list.append({
+            "title": search_item.get("title", "N/A"),
+            "snippet": search_item.get("snippet", "N/A"),
+            "url": search_item.get("link", "N/A"),
+            "html_snippet": search_item.get("htmlSnippet", "N/A")
+        })
+    
+    
+    """# print the results
+    print("="*10, f"Result #{i+start-1}", "="*10)
+    print("Title:", title)
+    print("Description:", snippet)
+    print("Long description:", long_description)
+    print("URL:", link, "\n")"""
+
     """Performs a web search and returns the top results.
 
+    
     Args:
         query (str): The search query.
         context (ToolContext): The tool execution context.
@@ -16,19 +62,7 @@ def web_search(query: str) -> dict:
         {'results': [{'title': ..., 'snippet': ..., 'url': ...}, ...]}
     """
     logger.info(f"Performing web search for query: {query}")
-    # MOCK WEB SEARCH RESPONSE - Replace with actual web search API call
     result = {
-        "results": [
-            {
-                "title": "Sample Web Result 1",
-                "snippet": "This is a summary of the first search result for your query.",
-                "url": "http://www.example.com/result1"
-            },
-            {
-                "title": "Sample Web Result 2",
-                "snippet": "This is a summary of the second search result.",
-                "url": "http://www.example.com/result2"
-            }
-        ]
+        "results": results_list
     }
     return result
