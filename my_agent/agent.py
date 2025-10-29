@@ -7,6 +7,7 @@ The `root_agent` is used to evaluate your agent's performance.
 from google.adk.agents import llm_agent
 from my_agent.tools import web_search  
 from my_agent.tools import file_reader 
+from my_agent.tools import image_changer 
 
 
 root_agent = llm_agent.Agent(
@@ -33,6 +34,6 @@ root_agent = llm_agent.Agent(
 Execute the user's request based on these directives.
 """,
     tools=[web_search,
-        file_reader.read_file],
+        file_reader.read_file,image_changer.process_image_file],
     sub_agents=[],
 )
