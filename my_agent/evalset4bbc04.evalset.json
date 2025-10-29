@@ -1,0 +1,133 @@
+{
+  "eval_set_id": "evalset4bbc04",
+  "name": "evalset4bbc04",
+  "eval_cases": [
+    {
+      "eval_id": "casebca1f1",
+      "conversation": [
+        {
+          "invocation_id": "e-c8680031-ee7c-46c1-9d24-58aae887d937",
+          "user_content": {
+            "parts": [
+              {
+                "text": "what is 5 + 5?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The result is 10."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-8dae23cf-57a4-44db-80e4-1e11b0ece041",
+                        "args": {
+                          "expression": "5+5"
+                        },
+                        "name": "calculate"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-8dae23cf-57a4-44db-80e4-1e11b0ece041",
+                        "name": "calculate",
+                        "response": {
+                          "result": 10.0
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1761743332.777153
+        },
+        {
+          "invocation_id": "e-71b1f61c-1e50-4535-ae27-dc03a2291210",
+          "user_content": {
+            "parts": [
+              {
+                "text": "what is 5 + 5?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "10.0"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-5bc41f9a-1f08-4c08-9d9a-c276ee8b2bbd",
+                        "args": {
+                          "expression": "5+5"
+                        },
+                        "name": "calculate"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-5bc41f9a-1f08-4c08-9d9a-c276ee8b2bbd",
+                        "name": "calculate",
+                        "response": {
+                          "result": 10.0
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1761743400.591696
+        }
+      ],
+      "session_input": {
+        "app_name": "my_agent",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1761743422.9730775
+    }
+  ],
+  "creation_timestamp": 1761743370.2071488
+}

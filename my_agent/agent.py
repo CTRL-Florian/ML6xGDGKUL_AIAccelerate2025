@@ -8,6 +8,7 @@ from google.adk.agents import llm_agent
 from my_agent.tools import web_search  
 from my_agent.tools import file_reader 
 from my_agent.tools import image_changer 
+from my_agent.tools import calculator
 
 
 root_agent = llm_agent.Agent(
@@ -21,7 +22,7 @@ root_agent = llm_agent.Agent(
 
 1. ... (Prioritize Explicit Commands)
 2. ... (Reason Step-by-Step)
-3. ... (Use Tools When Necessary - web_search)
+3. ... (Use Tools When Necessary - web_search, read_file, calculate)
 4. ... (Process Text Literally)
 
 # --- 修改这一条规则 ---
@@ -31,9 +32,17 @@ root_agent = llm_agent.Agent(
     * Pass **only the filename** as the argument.
     * **CRITICAL:** If the file is an image (like `.png` or `.jpg`), this tool will fail. You must report that you need a *different* tool for image analysis.
 
+6.  **Handle Math-Based Questions:**
+    * If the user's question contains a math simple math expression (e.g. standard arithmic operations, functions like sin, cos, log, etc.) you can use the `calculate` tool to solve it.
+    * Pass **only the math expression** as the argument.
+    * **CRITICAL:** If the expression is complex (e.g. solving for x, differentials, entegrations), this tool will fail. You must report that you need a *different* tool for those equations.
+    
+    
 Execute the user's request based on these directives.
 """,
     tools=[web_search,
-        file_reader.read_file,image_changer.process_image_file],
+        file_reader.read_file,
+        image_changer.process_image_file,
+        calculator.calculate],
     sub_agents=[],
 )
