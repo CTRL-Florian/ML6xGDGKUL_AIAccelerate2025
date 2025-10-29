@@ -9,7 +9,8 @@ import dotenv
 dotenv.load_dotenv(dotenv_path=pathlib.Path("./../.env"))
 
 #API_KEY = os.getenv("GOOGLE_API_KEY")
-API_KEY = "AlzaSyBxSVxle3tWf77uWGKiSzPvqfcCwCDZMdM"
+# API_KEY = "AIzaSyBxSVxle3tWf77uWGKiSzPvqfcCwCDZMdM"
+API_KEY = "AIzaSyBkLpz8J0daF8PF2f14RXwXAouyaxR6Rhw"
 CX = "e173d3da7360c4ed8"
 
 logger = logging.getLogger(__name__)
