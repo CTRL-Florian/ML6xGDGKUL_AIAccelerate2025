@@ -4,7 +4,7 @@ import mimetypes
 
 ATTACHMENTS_DIR = "benchmark/attachments/"
 
-def process_image_file(filename: str, operation: str = "info", **kwargs):
+def process_image_file(filename: str, operation: str, **kwargs):
 
     """
     Processes various image files (.jpg, .png, .jpeg, etc.) located in the benchmark/attachments/ directory.

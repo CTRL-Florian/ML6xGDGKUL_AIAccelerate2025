@@ -7,7 +7,7 @@ The `root_agent` is used to evaluate your agent's performance.
 from google.adk.agents import llm_agent
 from my_agent.tools import web_search  
 from my_agent.tools import file_reader 
-from my_agent.tools import image_changer 
+#from my_agent.tools import image_changer 
 from my_agent.tools import calculator
 
 
@@ -51,6 +51,11 @@ Before answering any question, always follow these five steps:
   2. Build a quick role table before translation or reasoning.
   3. Apply the described word order, case, or polarity exactly as stated, even if it feels reversed or unnatural.
 
+- Handle Web-Based Questions:
+    * If the user's question requires current, local, or niche information (e.g., “latest version of X”, “weather in London”, “who won yesterday’s match”), you MUST use the web_search tool to look it up.
+    * Pass a short, focused search query as the argument — summarize the user’s request in a few key words.
+    * CRITICAL: Do not include long sentences, URLs, or user context — just a clean, minimal query like "latest Python version 2025" or "Tesla stock price today".
+    
 - Handle File-Based Questions:
     * If the user's question mentions an attached file (e.g., "summary.pdf", "data.json", "report.csv", "sheet.xlsx"), you **MUST** use the `read_file` tool to get the file's content.
     * This tool can read: `.txt`, `.pdf`, `.json`, `.csv`, and `.xlsx`.
@@ -102,7 +107,6 @@ The reasoning process is internal — the user should see only the final result.
 """,
     tools=[web_search,
         file_reader.read_file,
-        image_changer.process_image_file,
         calculator.calculate],
     sub_agents=[],
 )
